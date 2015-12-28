@@ -18,7 +18,8 @@ include ../../../../_includes/_util-fns
   Let's get the big picture first.
 
 figure
-  img(src="/resources/images/devguide/architecture/overview2.png" alt="overview" style="margin-left:-40px;" width="700")
+  img(src="/resources/images/devguide/architecture/overview-with-module.png" alt="overview"
+  style="margin-left:-40px;" width="100%")
 :marked
   The architecture diagram identifies the eight main building blocks of an Angular 2 application:
   1. [Module](#module)   
@@ -40,7 +41,7 @@ figure
 :marked
   ## The Module
 figure
-  img(src="/resources/images/devguide/architecture/module.png" alt="Component" align="left" style="width:240px; margin-left:-40px;margin-right:10px" )
+  img(src="/resources/images/devguide/architecture/module.png" alt="Component" align="left" style="width:150px; margin-left:-40px;margin-right:10px;margin-top:-10px" )
 :marked
   Angular apps are modular. 
   
@@ -81,7 +82,7 @@ figure
   The **module name** (AKA module id) is often the same as the filename without its extension.
   ### Library Modules 
 figure
-  img(src="/resources/images/devguide/architecture/library-module.png" alt="Component" align="left" style="width:240px; margin-left:-40px;margin-right:10px" )
+  img(src="/resources/images/devguide/architecture/library-module.png" alt="Component" align="left" style="width:150px; margin-left:-40px;margin-right:10px" )
 :marked
   Some modules are libraries of other modules.
   
@@ -193,7 +194,7 @@ figure
   The `HeroDetailComponent` is a **child** of the the `HeroListComponent`.
 
 figure
-  img(src="/resources/images/devguide/architecture/component-tree.png" alt="Metadata" align="left" style="width:300px; margin-left:-40px;margin-right:10px" )
+  img(src="/resources/images/devguide/architecture/component-tree.png" alt="Metadata" style="width:400px; margin-left:-40px;margin-right:10px" )
 :marked
   Notice how `<hero-detail>` rests comfortably among the HTML elements we already know. 
   We can mix ... and will mix ... our custom components with native HTML in the same layouts.
@@ -275,7 +276,7 @@ figure
   into actions and value updates. Writing such push/pull logic by hand is tedious, error-prone and a nightmare to
   read as the experienced jQuery programmer can attest.
 figure
-  img(src="/resources/images/devguide/architecture/databinding.png" alt="Data Binding" style="width:220px; float:left; margin-left:-40px;margin-right:20px" )
+  img(src="/resources/images/devguide/architecture/databinding.png" alt="Data Binding" style="width:300px; float:left; margin-left:-40px;margin-right:20px" )
 :marked
   Angular supports **data binding**, 
   a mechanism for coordinating parts of a template with parts of a component.
@@ -380,7 +381,7 @@ figure
 :marked
   ## The Service
 figure
-  img(src="/resources/images/devguide/architecture/service.png" alt="Service" style="float:left; margin-left:-40px;margin-right:10px" )
+  img(src="/resources/images/devguide/architecture/service.png" alt="Service" style="width:200px;float:left; margin-left:-40px;margin-right:10px" )
 :marked
   "Service" is a broad category encompassing any value, function or feature that our application needs.
   
@@ -451,7 +452,7 @@ figure
   
   The process of `HeroService` injection looks a bit like this:
 figure
-  img(src="/resources/images/devguide/architecture/injector-injects.png" alt="Service" )
+  img(src="/resources/images/devguide/architecture/injector-injects.png" alt="Service" style="height:300px; margin-left:-40px;margin-right:10px" )
 :marked
   If the `Injector` doesn't have a `HeroService`, how does it know how to make one?
   

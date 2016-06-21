@@ -1,7 +1,6 @@
 block includes
   include ../_util-fns
 :marked
-  # Security
   Web application security has many aspects. This documentation describes Angular's built in
   protections against common web application vulnerabilities and attacks, such as Cross Site
   Scripting Attacks. It does not cover application level security, such as authentication (_Who is
@@ -14,12 +13,17 @@ block includes
 :marked
   # Table Of Contents
 
-  Hello
+  * [Reporting Vulnerabilities](#report-issues)
+  * [Best Practices](#best-practices)
+  * [Preventing Cross-Site Scripting (XSS)](#xss)
+  * [Trusting Safe Values](#bypass-security-apis)
+  * [HTTP-level Vulnerabilities](#http)
+  * [Auditing Angular Applications](#code-review)
 
 p Try the #[+liveExampleLink2()] of the code shown in this chapter.
 
 .l-main-section
-h2#report-issues Reporting vulnerabilities
+h2#report-issues Reporting Vulnerabilities
 :marked
   Email us at [security@angularjs.org](mailto:security@angularjs.org) to report vulnerabilities in
   Angular itself.
@@ -43,7 +47,7 @@ h2#best-practices Best Practices
   * **Avoid Angular APIs marked in the documentation as “[_Security Risk_](#bypass-security-apis)”.**
 
 .l-main-section
-h2#xss Prevent Cross-Site Scripting (XSS)
+h2#xss Preventing Cross-Site Scripting (XSS)
 :marked
   [Cross-Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) enables attackers
   to inject malicious code into web pages. Such code can then for example steal user's data (in
@@ -103,7 +107,6 @@ h2#xss Prevent Cross-Site Scripting (XSS)
 
 +makeExample('security/ts/app/inner-html-binding.component.ts', 'inner-html-controller')(format=".")
 :marked
-
   ### Avoid direct use of the DOM APIs
 
   The built-in browser DOM APIs do not automatically protect you from security vulnerabilities.
@@ -128,7 +131,7 @@ h2#xss Prevent Cross-Site Scripting (XSS)
   risk of introducing template injection vulnerabilities.
 
 .l-main-section
-h2#bypass-security-apis Trusting safe values
+h2#bypass-security-apis Trusting Safe Values
 :marked
   Sometimes applications genuinely need to include executable code, display an `<iframe>` from some
   URL, or construct potentially dangerous URLs. To prevent automatic sanitization in this situation,
@@ -152,13 +155,11 @@ h2#bypass-security-apis Trusting safe values
 
 +makeExample('security/ts/app/bypass-security.component.html', 'dangerous-url')(format=".")
 :marked
-
   Normally, Angular would automatically sanitize the URL and disable the dangerous code. To prevent
   this, we can mark the URL value as a trusted URL using the `bypassSecurityTrustUrl` call:
 
 +makeExample('security/ts/app/bypass-security.component.ts', 'trust-url')(format=".")
 :marked
-
   If we need to convert user input into a trusted value, it can be convenient to do so in a
   controller method. The template below binds a YouTube video ID, and then call a method of the
   controller to get a trusted resource URL (`<iframe src>` is a resource URL as an untrusted source
@@ -166,10 +167,9 @@ h2#bypass-security-apis Trusting safe values
 
 +makeExample('security/ts/app/bypass-security.component.html', 'iframe-videoid')(format=".")
 +makeExample('security/ts/app/bypass-security.component.ts', 'trust-video-url')(format=".")
-:marked
 
 .l-main-section
-h2#http HTTP-level vulnerabilities
+h2#http HTTP-level Vulnerabilities
 :marked
   Angular has built in support to help prevent two common HTTP vulnerabilities, Cross-site Request
   Forgery (XSRF) and Cross-site Script Inclusion (XSSI). Both of these must be primarily mitigated
